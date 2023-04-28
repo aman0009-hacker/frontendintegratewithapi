@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+
+
+    <!-- remix cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  </head>
+
+  <style>
+body
+
+{
+background-color: rgb(255, 249, 242);
+}
+.header_images {
+    width: 100%;
+    max-width: 520px;
+}
+.header_images h2 {
+    font-size: 50px;
+    font-weight: 600;
+}
+form h4.mb-5 {
+    font-size: 25px;
+    font-weight: 600;
+}
+i {
+    margin-right: 10px;
+    font-size: 24px;
+    vertical-align: middle;
+}
+label.form-label {
+    font-weight: 700;
+}
+.navbar
+{
+  background-color: rgb(255, 249, 242)!important;
+}
+.navbar-light .navbar-brand {
+
+    font-weight: 900;
+}
+li.nav-item a {
+    font-size: 18px;
+    font-weight: 600;
+} 
+.form-control {
+    background-color: #fff0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom:2px solid rgb(250 228 202);
+    border-radius: 0px;
+    position: relative;
+}
+
+
+.form-control:focus {
+    background-color: #fff0!important;
+    box-shadow: none!important;
+    border-color:rgb(250 228 202)
+}
+#form-show
+
+{
+  display:none;
+}
+.all_inputs::before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    height: 5px;
+    background-color: rgb(247,147,58,1);
+    z-index: 9;
+    transition: 0.5s;
+    transform: scaleX(0);
+}
+ .all_inputs:focus::before
+{
+
+  transform:scaleX(1);
+}
+.all_inputs label:focus
+{
+  transform:scale(0.7);
+}
+#form-of-login{
+    display: none;
+    margin-top: 70px;
+}
+.alert-danger,.alert-success {
+   
+    padding: 20px;
+}
+
+  </style>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">API Integration</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#" id="home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="login">Login</a>
+              </li>
+              <li class="nav-item">
+              
+                <a class="nav-link" id="sign_up" href="#">SignUp</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"style="display:none" href="#" id="logout">Logout</a>
+              </li>
+             
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+<div id="show_the_data">
+
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mt-4">
+        <div class="header_images">
+          <h2>Let's sign up to fill the form if you are new or sign in if you are already register</h2>
+          <img src="images/left-bg.gif"style="width:100%">
+        </div>
+    </div>
+    <div class="col-6 mt-4">
+    <form id="form-show" method="post">
+  <h4 class="mb-5">User Registration</h4>
+  <div class="mb-3 position-relative all_inputs"tabindex="1">
+    <label for="exampleInputEmail1" class="form-label"><i class="ri-user-fill"></i>Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type Name" name="name">
+  
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label"><i class="ri-lock-fill"></i>Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1"placeholder="Type password" name="password">
+  </div>
+  <div class="mb-3">
+    <label for="the_password" class="form-label"><i class="ri-building-fill"></i>City</label>
+    <input type="text" class="form-control" id="the_password" placeholder="Type City" name="city">
+  </div>
+
+  <button type="submit" class="btn btn-dark py-3 px-5" id="submit-form">Submit</button>
+</form>
+
+
+
+<form id="form-of-login" method="post">
+  <h4 class="mb-5">Sign In</h4>
+  <div class="mb-3 position-relative all_inputs"tabindex="1">
+    <label for="exampleInputEmail2" class="form-label"><i class="ri-user-fill"></i>Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Type Name" name="name">
+  
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword2" class="form-label"><i class="ri-lock-fill"></i>Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword2"placeholder="Type password" name="password">
+  </div>
+ 
+
+  <button type="submit" class="btn btn-dark py-3 px-5" id="login-form">Submit</button>
+</form>
+
+
+
+    </div>
+  </div>
+
+</div>
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script>
+
+let a=document.getElementsByClassName('nav-link')[0];
+let b=document.getElementsByClassName('nav-link')[1];
+let c=document.getElementsByClassName('nav-link')[2];
+let d=document.getElementsByClassName('nav-link')[3];
+     
+    a.addEventListener('click',function()
+    {
+      a.classList.add('active');
+      b.classList.remove('active');
+      c.classList.remove('active');
+      d.classList.remove('active');
+    })
+    b.addEventListener('click',function()
+    {
+      a.classList.remove('active');
+      b.classList.add('active');
+      c.classList.remove('active');
+      d.classList.remove('active');
+    })
+    c.addEventListener('click',function()
+    {
+      a.classList.remove('active');
+      b.classList.remove('active');
+      c.classList.add('active');
+      d.classList.remove('active');
+    })
+    d.addEventListener('click',function()
+    {
+      a.classList.remove('active');
+      b.classList.remove('active');
+      c.classList.remove('active');
+      d.classList.add('active');
+    })
+
+    $(document).ready(function()
+    {
+      homepages();
+      $("#home").click(function()
+      {
+          $('#form-show').hide();
+          $('#form-of-login').hide();
+          homepage();
+      })
+      $("#login").click(function()
+      {
+        $('#form-of-login').show();
+          $('#form-show').hide();
+      })
+    
+      $('#sign_up').click(function()
+      {
+          $('#form-show').show();
+          $('#form-of-login').hide();
+      })
+
+
+
+      // register form
+       $('#submit-form').click(function(event)
+       {
+        event.preventDefault();   
+        var formdata=$('#form-show');
+                
+
+        var formdata=JSON.stringify($('#form-show').serializeObject());
+        
+        
+        $.ajax({
+          url:"http://localhost/rest_api/customer/create.php",
+          type:"POST",
+          data:formdata,
+          contentType:"application/JSON",
+          success:function(result)
+          {
+               $('#show_the_data').html("<div class='success alert-success'><h4>The data is succesfully inserted<h4></div>")
+               $('#form-show').find('input').val('');
+          },
+          error:function(result)
+          {
+               $('#show_the_data').html("<div class='success alert-danger'><h4>The data is not inserted<h4></div>")
+          }
+        })
+       })
+
+
+
+
+// login form
+
+
+       $('#login-form').click(function(event)
+       {
+        event.preventDefault();
+        
+       
+
+        var formOFdata=JSON.stringify($('#form-of-login'). serializeObject());
+      
+     
+        $.ajax({
+          url:"http://localhost/rest_api/customer/login.php",
+          type:"POST",
+          data:formOFdata,
+          contentType:"application/JSON",
+          success:function(result)
+          {
+               $('#show_the_data').html("<div class='success alert-success'>Successfully login</div>")
+               $('#form-of-login').find('input').val('');
+               
+               setCookie('jwt', result.data.jwt, 1);
+               homepage();
+          },
+          error:function(result)
+          {
+               $('#show_the_data').html("<div class='success alert-danger'>Your username and password is incorrect</div>")
+          }
+        })
+       })
+
+
+       function setCookie(name, value, daysToLive) {
+    // Encode value in order to escape semicolons, commas, and whitespace
+    var cookie = name + "=" + encodeURIComponent(value);
+    
+    if(typeof daysToLive === "number") {
+        /* Sets the max-age attribute so that the cookie expires
+        after the specified number of days */
+        cookie += "; max-age=" + (daysToLive*24*60*60);
+        
+        document.cookie = cookie;
+    }
+}
+
+
+
+
+function getCookie(name) {
+    // Split cookie string and get all individual name=value pairs in an array
+    var cookieArr = document.cookie.split(";");
+    
+    // Loop through the array elements
+    for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if(name == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+    
+    // Return null if not found
+    return null;
+}
+
+function homepage()
+{
+  var the_jwt=getCookie('jwt');
+  $.post("http://localhost/rest_api/customer/validate_toke.php",JSON.stringify({jwt:the_jwt}))
+
+  .done(function(result){
+    $('#form-of-login').hide();
+    $('#login').hide();
+    $('#sign_up').hide();
+    $('#logout').show();
+    a.classList.add('active');
+    
+
+  })
+  .fail(function(result)
+  {
+    $('#show_the_data').html("<div class='success alert-danger'>You are not authorized to access this page,please signin to enter the homepage</div>")
+
+    $('#form-of-login').show();
+  })
+}
+function homepages()
+{
+  var the_jwt=getCookie('jwt');
+  $.post("http://localhost/rest_api/customer/validate_toke.php",JSON.stringify({jwt:the_jwt}))
+
+  .done(function(result){
+    $('#form-of-login').hide();
+    $('#login').hide();
+    $('#sign_up').hide();
+    $('#logout').show();
+    a.classList.add('active');
+  b.addList.remove('remove');
+    
+
+  })
+  .fail(function(result)
+  {
+    $('#show_the_data').html("<div class='success alert-danger'>Please sign to enter the home page</div>")
+
+    $('#form-of-login').show();
+  b.classList.add('active');
+  a.addList.remove('remove');
+  
+
+  })
+}
+
+
+$('#logout').click(function()
+{
+  setCookie('jwt','',1);
+  $('#logout').hide();
+  $('#login').show();
+  $('#sign_up').show();
+  $('#form-of-login').show();
+  b.classList.add('active');
+
+})
+
+       $.fn.serializeObject = function(){
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+    
+
+    })
+
+  </script>
+</script>
+  </body>
+</html>
